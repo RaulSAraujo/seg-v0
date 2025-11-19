@@ -1,0 +1,632 @@
+[
+    {
+        "icon": "mdi-tag-plus",
+        "title": "Produto compra",
+        "name": "product",
+        "menu": "Cadastros",
+        "backUrl": "/product",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-tag-minus",
+        "title": "Produto venda",
+        "name": "product-sell",
+        "menu": "Cadastros",
+        "backUrl": "/product-sell",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-image-area",
+        "title": "Validação de imagens",
+        "name": "validate-image",
+        "menu": "Cadastros",
+        "backUrl": "/validate-products-image",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-truck-fast",
+        "title": "Fornecedores",
+        "name": "supplier",
+        "menu": "Cadastros",
+        "backUrl": "/supplier",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-devices",
+        "title": "Aparelhos",
+        "name": "apparatus",
+        "menu": "Cadastros",
+        "backUrl": "/apparatus",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-account-group",
+        "title": "Clientes",
+        "name": "client",
+        "menu": "Cadastros",
+        "backUrl": "/clients",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-archive",
+        "title": "Embalagens",
+        "name": "package",
+        "menu": "Cadastros",
+        "backUrl": "/package",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-truck",
+        "title": "Transportadoras",
+        "name": "shipment",
+        "menu": "Cadastros",
+        "backUrl": "/shipment-orders",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-printer",
+        "title": "Impressoras",
+        "name": "printer",
+        "menu": "Cadastros",
+        "backUrl": "/printers-settings",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-view-carousel",
+        "title": "Pedidos de compra",
+        "name": "purchase-order",
+        "menu": "Compras",
+        "backUrl": "/purchase-control",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-form-select",
+        "title": "Solicitações de compra",
+        "name": "purchase-request",
+        "menu": "Compras",
+        "backUrl": "/purchase-request",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-currency-usd",
+        "title": "Cotações",
+        "name": "quotation",
+        "menu": "Compras",
+        "backUrl": "/quotation-pack",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-store",
+        "title": "Pedidos mercado livre",
+        "name": "order-ml",
+        "menu": "Compras",
+        "backUrl": "/orders-finality-stock-ml",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-invoice-import",
+        "title": "Pedidos importação",
+        "name": "order-import",
+        "menu": "Compras",
+        "backUrl": "/import-orders",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-paperclip",
+        "title": "Insumos",
+        "name": "insumos",
+        "menu": "Compras",
+        "backUrl": "/input-materials",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-file-alert",
+        "title": "Estoque mínimo",
+        "name": "minimum-stock",
+        "menu": "Compras",
+        "backUrl": "/minimum-stock",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-home-analytics",
+        "title": "Análise de movimentação de estoque",
+        "name": "stock-movement-analysis",
+        "menu": "Compras",
+        "backUrl": "/stock-movement-analysis",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-package-check",
+        "title": "Salvados",
+        "name": "saved-rma",
+        "menu": "Compras",
+        "backUrl": "/saved-rma",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-receipt-text-clock",
+        "title": "Pendencias de preço",
+        "name": "pending-price",
+        "menu": "Compras",
+        "backUrl": "/pendency-price",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-lan-check",
+        "title": "Validação de estoque virtual",
+        "name": "validate-stock-virtual",
+        "menu": "Compras",
+        "backUrl": "/validate-virtual-stock",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-onepassword",
+        "title": "Senha de fornecedores",
+        "name": "supplier-password",
+        "menu": "Compras",
+        "backUrl": "/supplier-passwords",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-calendar-range",
+        "title": "Data limite pedido compra",
+        "name": "limit-date",
+        "menu": "Compras",
+        "backUrl": "/limit-date-purchase-control",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-cart-percent",
+        "title": "Pedidos de separação",
+        "name": "separation-requests",
+        "menu": "Vendas",
+        "backUrl": "/sales-orders-separation",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-truck-check-outline",
+        "title": "Validação de envio",
+        "name": "shipping-validation",
+        "menu": "Vendas",
+        "backUrl": "/shipping-validation",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-content-save-all",
+        "title": "Garantia",
+        "name": "warranty",
+        "menu": "Vendas",
+        "backUrl": "/warranty-rma",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-chart-arc",
+        "title": "Indicadores",
+        "name": "indicators",
+        "menu": "Vendas",
+        "backUrl": "/indicators-orders",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-network-pos",
+        "title": "Pedido Balcão",
+        "name": "counter-order",
+        "menu": "Vendas",
+        "backUrl": "/counter-order",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-cart-percent",
+        "title": "Aparelhos à venda",
+        "name": "sell-device",
+        "menu": "Vendas",
+        "backUrl": "/sell-device",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-phone-hangup",
+        "title": "Sac",
+        "name": "sac",
+        "menu": "Vendas",
+        "backUrl": "/sac-sale",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-script-text-key",
+        "title": "Seo p/ categoria",
+        "name": "product-template",
+        "menu": "Vendas",
+        "backUrl": "/template-config",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-webpack",
+        "title": "Ordem de serviço",
+        "name": "service-order",
+        "menu": "Serviços",
+        "backUrl": "/service-order",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-cash-register",
+        "title": "Controle de caixa",
+        "name": "cash-control",
+        "menu": "Serviços",
+        "backUrl": "/reception-cash-control",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-card-account-details",
+        "title": "Crm",
+        "name": "crm",
+        "menu": "Serviços",
+        "backUrl": "/internal-observation",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-account-wrench",
+        "title": "Atendimento externo",
+        "name": "external",
+        "menu": "Serviços",
+        "backUrl": "/external-service-report",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-book-clock-outline",
+        "title": "Agenda",
+        "name": "schedule",
+        "menu": "Serviços",
+        "backUrl": "/service-order-schedule",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-file-table-box",
+        "title": "Tabela diversas",
+        "name": "several-tables",
+        "menu": "Serviços",
+        "backUrl": "/several-tables",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-tag-multiple",
+        "title": "Etiqueta de produto",
+        "name": "product-label",
+        "menu": "Estoque",
+        "backUrl": "/stock-tag-control",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-package-variant",
+        "title": "Local de armazenagem",
+        "name": "storage-location",
+        "menu": "Estoque",
+        "backUrl": "/erp-product-stock",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-help-box",
+        "title": "Sugestão local de armazenagem",
+        "name": "suggested-storage-location",
+        "menu": "Estoque",
+        "backUrl": "/suggested-storage-location",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-file-arrow-up-down-outline",
+        "title": "Controle de empréstimo",
+        "name": "product-loan",
+        "menu": "Estoque",
+        "backUrl": "/product-loan",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-receipt-text-check",
+        "title": "Recebimento",
+        "name": "receipt",
+        "menu": "Estoque",
+        "backUrl": "/receivement",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-math-log",
+        "title": "Log separação",
+        "name": "separation-log",
+        "menu": "Estoque",
+        "backUrl": "/order-picking",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-transfer",
+        "title": "Transferência",
+        "name": "transfer",
+        "menu": "Estoque",
+        "backUrl": "/stock-transfer",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-archive-settings",
+        "title": "Gestão de coletas",
+        "name": "parts-collection-management",
+        "menu": "Estoque",
+        "backUrl": "/parts-collection-management",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-poll",
+        "title": "Estoque fiscal",
+        "name": "tax-stock",
+        "menu": "Estoque",
+        "backUrl": "/tax-stock",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-semantic-web",
+        "title": "Log de estocagem",
+        "name": "stocking-module",
+        "menu": "Estoque",
+        "backUrl": "/stocking-module",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-cash-refund",
+        "title": "Devolução de Compra",
+        "name": "purchase-return",
+        "menu": "Estoque",
+        "backUrl": "/purchase-return",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-recycle",
+        "title": "Peças sucatas",
+        "name": "scrap",
+        "menu": "Estoque",
+        "backUrl": "/api/v1/scraps",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-home-analytics",
+        "title": "Dashboard",
+        "name": "dashboard",
+        "menu": "Expedição",
+        "backUrl": "/dashboard",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-receipt-text-check-outline",
+        "title": "Checkout",
+        "name": "check-out",
+        "menu": "Expedição",
+        "backUrl": "/sales-order",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-notebook-outline",
+        "title": "Romaneio",
+        "name": "romaneio",
+        "menu": "Expedição",
+        "backUrl": "/sales-collection",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-clock-time-eight",
+        "title": "Horário de corte",
+        "name": "cut-time",
+        "menu": "Expedição",
+        "backUrl": "/carrier-cut-time",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-priority-high",
+        "title": "Urgência de Envio",
+        "name": "shipping-urgency",
+        "menu": "Expedição",
+        "backUrl": "/shipping-urgency",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-server-network",
+        "title": "Erros sincronização",
+        "name": "integration-sync-errors",
+        "menu": "Integrações",
+        "backUrl": "/product-sync-errors",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-alpha-e-circle",
+        "title": "E-commerces",
+        "name": "integration-ecommerce",
+        "menu": "Integrações",
+        "backUrl": "/ecommerce",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-cloud-braces",
+        "title": "Log de Integrações",
+        "name": "integration-log",
+        "menu": "Integrações",
+        "backUrl": "/integration-logs",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-robot",
+        "title": "Puppeteer",
+        "name": "automation-puppeteer",
+        "menu": "Automações",
+        "backUrl": "/automations",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-order-bool-ascending-variant",
+        "title": "Pedidos",
+        "name": "automation-order",
+        "menu": "Automações",
+        "backUrl": "/order-automation",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-account-multiple",
+        "title": "Lista de acesso",
+        "name": "access-list",
+        "menu": "Configurações de usuários",
+        "backUrl": "/users-access-list",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-history",
+        "title": "Log de acesso",
+        "name": "access-log",
+        "menu": "Configurações de usuários",
+        "backUrl": "/login-log",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-account-details",
+        "title": "Perfil",
+        "name": "setting-profile",
+        "menu": "Configurações de usuários",
+        "backUrl": "/api/v1/groups",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-account",
+        "title": "Usuários",
+        "name": "manage-user",
+        "menu": "Configurações de usuários",
+        "backUrl": "/api/v1/users",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-bell",
+        "title": "Notificações",
+        "name": "setting-notification",
+        "menu": "Configurações de usuários",
+        "backUrl": "/api/v1/notifications/receivers",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-warehouse",
+        "title": "Almoxarifados",
+        "name": "warehouse",
+        "menu": "Configurações de sistema",
+        "backUrl": "/erp-warehouse",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-tune",
+        "title": "Campos configuráveis",
+        "name": "model-fields",
+        "menu": "Configurações de sistema",
+        "backUrl": "/api/v1/model-fields",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-domain",
+        "title": "Empresas",
+        "name": "company",
+        "menu": "Configurações de sistema",
+        "backUrl": "/companies",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-file-document",
+        "title": "Faturamento",
+        "name": "invoicing",
+        "menu": "Configurações de sistema",
+        "backUrl": "/invoice-rule",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-filter-variant",
+        "title": "Filtros/Grid",
+        "name": "custom-filter-grid",
+        "menu": "Configurações de sistema",
+        "backUrl": "/custom-filters",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-cog",
+        "title": "Sistema",
+        "name": "manage-system",
+        "menu": "Configurações de sistema",
+        "backUrl": "/manager-system",
+        "auth": false,
+        "child": false
+    },
+    {
+        "icon": "mdi-table",
+        "title": "Tabela de preço balcão",
+        "name": "table-price",
+        "menu": "Configurações de sistema",
+        "backUrl": "/table-price",
+        "auth": false,
+        "child": false
+    }
+]

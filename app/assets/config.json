@@ -1,0 +1,16 @@
+[
+    {
+        "icon": "mdi-cog",
+        "title": "Configurações",
+        "subMenus": [
+            {
+                "title": "Configurações de usuários",
+                "pages": []
+            },
+            {
+                "title": "Configurações de sistema",
+                "pages": []
+            }
+        ]
+    }
+]

@@ -1,0 +1,42 @@
+[
+    {
+        "icon": "mdi-tag-multiple",
+        "title": "Cadastros",
+        "items": []
+    },
+    {
+        "icon": "mdi-clipboard-text",
+        "title": "Compras",
+        "items": []
+    },
+    {
+        "icon": "mdi-cart",
+        "title": "Vendas",
+        "items": []
+    },
+    {
+        "icon": "mdi-toolbox-outline",
+        "title": "Serviços",
+        "items": []
+    },
+    {
+        "icon": "mdi-cube-send",
+        "title": "Estoque",
+        "items": []
+    },
+    {
+        "icon": "mdi-transfer",
+        "title": "Expedição",
+        "items": []
+    },
+    {
+        "icon": "mdi-server-security",
+        "title": "Integrações",
+        "items": []
+    },
+    {
+        "icon": "mdi-server-security",
+        "title": "Automações",
+        "items": []
+    }
+]

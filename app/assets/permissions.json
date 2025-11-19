@@ -1,0 +1,17 @@
+[
+    {
+        "auth": false,
+        "id": "service-order-budget-cost",
+        "backUrl": "/service-order",
+        "subpermission": "/service-order/show-product-costs-budget",
+        "description": "Visualizar o custo da aba de orçamento"
+    },
+    {
+        "auth": false,
+        "id": "service-order-octadesk",
+        "backUrl": "/service-order",
+        "subpermission": "/service-order/octadesk",
+        "description": "Exibir ou ocultar o botão de WhatsApp"
+    }
+    
+]

@@ -1,0 +1,58 @@
+:root {
+  --track-color: #1E1E1E;
+  --thumb-color: #8080804d;
+  --border-color: #2c2c2c00;
+  --track-color-hover: #808080a3;
+  --width-scrollbar: 8px;
+  --height-scrollbar: 8px;
+  --schedule: #12121244;
+  --border-schedule-color: #606060
+}
+
+html {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+body {
+  font-family: 'Poppins';
+}
+
+::-webkit-scrollbar {
+  width: var(--width-scrollbar);
+  height: var(--height-scrollbar);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--track-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--thumb-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--track-color-hover);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+  /* Torna invisível */
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+
+.highcharts-credits {
+  fill: none !important;
+}

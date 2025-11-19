@@ -1,0 +1,50 @@
+<script setup lang="ts">
+const props = defineProps<{
+  label: string;
+  value: boolean | null;
+  alt?: string;
+}>();
+
+const emit = defineEmits(["switch"]);
+
+const lock = ref(true);
+const switchLock = () => {
+  if (props.value === true && lock.value === false) {
+    emit("switch");
+  }
+
+  lock.value = !lock.value;
+};
+
+const propRef = toRef(props, "value");
+watch(propRef, (newValue) => {
+  if (newValue === true) {
+    lock.value = false;
+  }
+
+  if (newValue === null) {
+    lock.value = true;
+  }
+});
+</script>
+
+<template>
+  <v-switch
+    :id="alt || label"
+    :label="label"
+    inset
+    color="primary"
+    density="compact"
+    :indeterminate="lock"
+    hide-details="auto"
+    :base-color="!lock ? 'red' : ''"
+  >
+    <template #append>
+      <v-btn
+        :icon="lock ? 'mdi-lock-outline' : 'mdi-lock-open-outline'"
+        variant="plain"
+        @click="switchLock"
+      />
+    </template>
+  </v-switch>
+</template>
