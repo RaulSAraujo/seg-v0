@@ -33,14 +33,17 @@ const saveDate = (event: string, multiple: boolean | string) => {
 </script>
 
 <template>
-  <v-row dense class="pa-5">
-    <v-col
-      v-for="item of availableFilter"
-      :key="item.attribute"
-      :cols="12"
-      :md="(item.layout_filters?.size ?? 2) + 4"
-      :lg="(item.layout_filters?.size ?? 2) + 1"
-    >
+  <div class="filter-group-wrapper">
+    <v-row dense class="pa-5">
+      <v-col
+        v-for="(item, index) of availableFilter"
+        :key="item.attribute"
+        :cols="12"
+        :md="(item.layout_filters?.size ?? 2) + 4"
+        :lg="(item.layout_filters?.size ?? 2) + 1"
+        :style="{ '--filter-index': index }"
+        class="filter-item"
+      >
       <LazyUiTextField
         v-if="item.type == 'STRING'"
         v-model="item.value"
@@ -136,6 +139,42 @@ const saveDate = (event: string, multiple: boolean | string) => {
       />
     </v-col>
 
-    <slot name="extra-filter" />
-  </v-row>
+      <slot name="extra-filter" />
+    </v-row>
+  </div>
 </template>
+
+<style scoped>
+.filter-group-wrapper {
+  overflow: hidden;
+}
+
+.filter-item {
+  animation: filterFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: calc(var(--filter-index, 0) * 0.05s);
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@keyframes filterFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Transição suave para mudanças nos campos */
+:deep(.v-field),
+:deep(.v-input),
+:deep(.v-select),
+:deep(.v-text-field) {
+  transition: all 0.2s ease;
+}
+
+:deep(.v-field:hover),
+:deep(.v-input:hover),
+:deep(.v-select:hover),
+:deep(.v-text-field:hover) {
+  transform: translateY(-1px);
+}
+</style>
