@@ -77,33 +77,70 @@ const isStringOrArray = (type: string, value: unknown): value is string =>
 // Helpers
 const getSlotName = (name: string) => name as string;
 const getItemSlotName = (key: string) => `item.${key}` as string;
+
+// Aplicar animação escalonada às linhas da tabela
+const tableRef = ref<HTMLElement | null>(null);
+
+watch([items, loading], () => {
+  if (!loading.value && items.value.length > 0) {
+    nextTick(() => {
+      applyRowAnimations();
+    });
+  }
+});
+
+onMounted(() => {
+  nextTick(() => {
+    applyRowAnimations();
+  });
+});
+
+function applyRowAnimations() {
+  const ref = tableRef.value;
+  if (!ref) return;
+  
+  nextTick(() => {
+    // Buscar dentro do ClientOnly
+    const tbody = ref.querySelector('.v-data-table__tbody');
+    if (!tbody) return;
+
+    const rows = tbody.querySelectorAll('.v-data-table__tr');
+    if (rows.length === 0) return;
+
+    rows.forEach((row, index) => {
+      const delay = Math.min(index * 0.02, 1); // Delay máximo de 1s
+      (row as HTMLElement).style.setProperty('--animation-delay', `${delay}s`);
+    });
+  });
+}
 </script>
 
 <template>
-  <ClientOnly>
-    <v-data-table-server
-      v-model="selected"
-      v-model:expanded="expanded"
-      v-model:sort-by="sortBy"
-      :headers="headers"
-      :items="items"
-      item-value="id"
-      select-strategy="all"
-      :page="page"
-      :items-per-page="itemsPerPage"
-      :items-length="totalItems"
-      :loading="loading"
-      loading-text="Loading... Please wait"
-      :show-expand="showExpand"
-      :show-select="$device.isMobile ? false : showSelect"
-      :multi-sort="multiSort"
-      mobile-breakpoint="sm"
-      :row-props="rowProps"
-      density="compact"
-      return-object
-      hide-default-footer
-      @update:options="tableStore.searchData"
-    >
+  <div ref="tableRef" class="table-body-wrapper">
+    <ClientOnly>
+      <v-data-table-server
+        v-model="selected"
+        v-model:expanded="expanded"
+        v-model:sort-by="sortBy"
+        :headers="headers"
+        :items="items"
+        item-value="id"
+        select-strategy="all"
+        :page="page"
+        :items-per-page="itemsPerPage"
+        :items-length="totalItems"
+        :loading="loading"
+        loading-text="Loading... Please wait"
+        :show-expand="showExpand"
+        :show-select="$device.isMobile ? false : showSelect"
+        :multi-sort="multiSort"
+        mobile-breakpoint="sm"
+        :row-props="rowProps"
+        density="compact"
+        return-object
+        hide-default-footer
+        @update:options="tableStore.searchData"
+      >
       <template
         v-for="header in availableFormat"
         :key="header.key"
@@ -164,8 +201,9 @@ const getItemSlotName = (key: string) => `item.${key}` as string;
           height="2"
         />
       </template>
-    </v-data-table-server>
-  </ClientOnly>
+      </v-data-table-server>
+    </ClientOnly>
+  </div>
 </template>
 
 <style scoped>
@@ -175,5 +213,37 @@ const getItemSlotName = (key: string) => `item.${key}` as string;
 
 .v-theme--light :deep(.v-data-table__thead) {
   background-color: #eeeeee;
+}
+
+/* Transições suaves para as linhas da tabela */
+:deep(.v-data-table__tr) {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+:deep(.v-data-table__tr:hover) {
+  transform: translateX(2px);
+}
+
+/* Animação de entrada para as linhas */
+:deep(.v-data-table__tbody .v-data-table__tr) {
+  animation: fadeInRow 0.3s ease forwards;
+  animation-delay: var(--animation-delay, 0s);
+  opacity: 0;
+}
+
+@keyframes fadeInRow {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Transição suave para o loader */
+:deep(.v-data-table__loader) {
+  transition: opacity 0.3s ease;
 }
 </style>
