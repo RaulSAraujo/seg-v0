@@ -1,13 +1,5 @@
 <script setup lang="ts">
-import { clientWithAddressSchema } from "~/schemas/client";
-import { getById, update } from "~/services/client.service";
-import { createDefaultClient } from "~/factories/current/clientFactory";
-import { transformerData } from "~/composables/client/transformeData";
-
-import type {
-  RowWithAddressSingle,
-  ClientAddress,
-} from "~/interfaces/Client";
+import type { Client } from "~/interfaces/Client";
 
 const { params } = useRoute();
 
@@ -19,40 +11,12 @@ definePageMeta({
   path: "/cliente/:id",
 });
 
-const res = await getById(params.id as string);
-
 const router = useRouter();
-const loading = useLoadingIndicator();
 
-const { handleSubmit } = useForm<RowWithAddressSingle>({
-  validationSchema: clientWithAddressSchema,
-  initialValues: createDefaultClient(res),
-});
-
-const address2 = ref(res.deliveryAddress || ({} as ClientAddress));
-const address3 = ref(res.collectionAddress || ({} as ClientAddress));
-
-const submit = handleSubmit(async (values) => {
-  try {
-    loading.start();
-
-    const newValues = transformerData(values);
-
-    await update(
-      params.id as string,
-      newValues,
-      address2.value,
-      address3.value
-    );
-
-    $toast().success("Sucesso ao editar o cliente.");
-  } catch (error) {
-    const err = error as { statusText: string; data: { error: string } };
-
-    $toast().error(`${err.data.error ?? err.statusText}`);
-  } finally {
-    loading.finish();
-  }
+const { data, status } = $useApi<Client>(`/clients`, {
+  params: {
+    id: params.id as string,
+  },
 });
 
 onBeforeRouteLeave((to, from, next) => {
@@ -82,15 +46,12 @@ onBeforeRouteLeave((to, from, next) => {
     </div>
 
     <v-sheet class="mx-2 pb-4" rounded="xl">
-      <ClientForm title="EDITAR CLIENTE" @submit="submit">
-        <template #expansion>
-          <v-expansion-panels elevation="0">
-            <ClientUiExpansion :client-address="address2" />
-
-            <ClientUiExpansion :client-address="address3" />
-          </v-expansion-panels>
-        </template>
-      </ClientForm>
+      <ClientForm
+        v-if="status === 'success' && data && data.rows[0]"
+        :client-id="params.id as string"
+        title="EDITAR CLIENTE"
+        :initial-values="data.rows[0]"
+      />
     </v-sheet>
   </div>
 </template>
