@@ -8,7 +8,7 @@ type Options = {
 export const useInformationCenter = (options: Options) => {
     const { server = true, immediate = true, lazy = false } = options
 
-    const { data, status, error, refresh, execute } = useFetch<CounterOrderInformationCentral[]>('/counter-order/information-center', {
+    const { data, status, error, refresh, execute } = $useApi<CounterOrderInformationCentral[]>('/counter-order/information-center', {
         lazy,
         server,
         immediate,

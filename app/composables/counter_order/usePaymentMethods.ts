@@ -9,7 +9,7 @@ type Options = {
 export const usePaymentMethods = (options: Options) => {
     const { server = true, immediate = true, lazy = false } = options
 
-    const { data, status, error, refresh, execute } = $api<PaymentsMethods[]>('counter-order/payment-methods', {
+    const { data, status, error, refresh, execute } = $useApi<PaymentsMethods[]>('counter-order/payment-methods', {
         lazy,
         server,
         immediate,

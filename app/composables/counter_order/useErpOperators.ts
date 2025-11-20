@@ -9,7 +9,7 @@ type Options = {
 export const useErpOperators = (options: Options) => {
     const { server = true, immediate = true, lazy = false } = options
 
-    const { data, status, error, refresh, execute } = useFetch<ErpOperators[]>('/counter-order/counter-order-payments/erp-operators', {
+    const { data, status, error, refresh, execute } = $useApi<ErpOperators[]>('/counter-order/counter-order-payments/erp-operators', {
         lazy,
         server,
         immediate,

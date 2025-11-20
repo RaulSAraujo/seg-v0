@@ -9,7 +9,7 @@ type Options = {
 export const useCounterOrderLogs = (options: Options) => {
     const { server = true, immediate = true, lazy = false } = options
 
-    const { data, status, error, refresh, execute } = useFetch<Row[]>('/counter-order/logs', {
+    const { data, status, error, refresh, execute } = $useApi<Row[]>('/counter-order/logs', {
         lazy,
         server,
         immediate,

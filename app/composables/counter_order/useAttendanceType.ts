@@ -13,7 +13,7 @@ interface AttendanceType {
 export const useAttendanceType = (options: Options) => {
     const { server = true, immediate = true, lazy = false } = options
 
-    const { data, status, error, refresh, execute } = $api<AttendanceType[]>('counter-order/attendance-type', {
+    const { data, status, error, refresh, execute } = $useApi<AttendanceType[]>('counter-order/attendance-type', {
         lazy,
         server,
         immediate,

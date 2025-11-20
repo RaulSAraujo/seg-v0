@@ -3,7 +3,6 @@ import type { AddUserActive } from "~/interfaces/ServiceOrder"
 export const useServiceOrderEventSource = (orderId: string) => {
     const { token } = useAuth()
 
-    const { $customFetch } = useNuxtApp()
     const config = useRuntimeConfig()
 
     const eventSource = ref<EventSource>()
@@ -34,7 +33,7 @@ export const useServiceOrderEventSource = (orderId: string) => {
     }
 
     const addUserActive = async () => {
-        const res = await $customFetch<AddUserActive>("service-order/add-user-active",
+        const res = await $api<AddUserActive>("service-order/add-user-active",
             {
                 method: "POST",
                 body: { id: orderId }
@@ -66,7 +65,7 @@ export const useServiceOrderEventSource = (orderId: string) => {
     }
 
     const removeUserActive = async () => {
-        await $customFetch("service-order/remove-user-active", {
+        await $api("service-order/remove-user-active", {
             method: "POST"
         })
     }

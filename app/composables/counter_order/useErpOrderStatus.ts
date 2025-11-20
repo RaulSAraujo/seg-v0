@@ -12,7 +12,7 @@ interface OrderStatus {
 export const useErpOrderStatus = (options: Options) => {
     const { server = true, immediate = true, lazy = false } = options
 
-    const { data, status, error, refresh, execute } = useFetch<OrderStatus[]>('/counter-order/erp-order-status', {
+    const { data, status, error, refresh, execute } = $useApi<OrderStatus[]>('/counter-order/erp-order-status', {
         lazy,
         server,
         immediate,

@@ -9,7 +9,7 @@ type Options = {
 export const useCounterOrderById = (options: Options) => {
   const { server = true, immediate = true, lazy = false } = options
 
-  const { data, status, error, refresh, execute } = useFetch<Row>(`/counter-order/${useRoute().params.id}`, {
+  const { data, status, error, refresh, execute } = $useApi<Row>(`/counter-order/${useRoute().params.id}`, {
     lazy,
     server,
     immediate,
