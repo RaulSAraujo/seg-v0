@@ -7,7 +7,7 @@ type Options = {
 export const usePrintersSettings = (options: Options) => {
     const { server = true, immediate = true, lazy = false } = options
 
-    const { data, status, error, refresh, execute } = $useApi('/printers-settings', {
+    const { data, status, error, refresh, execute } = $useApi('/printers-settings/printers', {
         lazy,
         server,
         immediate,

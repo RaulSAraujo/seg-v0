@@ -13,7 +13,7 @@ definePageMeta({
 const item = ref({} as Form);
 const dialog = ref<boolean>(false);
 
-const { data } = usePrintersSettings({ lazy: true });
+const { data, status } = usePrintersSettings({ lazy: true });
 
 const close = () => {
   dialog.value = false;
@@ -27,9 +27,13 @@ const close = () => {
 
     <PrintersFilter @active="dialog = true" />
 
-    <PrintersTable :list-printers="data ?? []" />
+    <PrintersTable
+      v-if="status === 'success' && data"
+      :list-printers="data ?? []"
+    />
 
     <PrintersDialog
+      v-if="status === 'success' && data"
       v-model="dialog"
       :form="item"
       :list-printers="data ?? []"

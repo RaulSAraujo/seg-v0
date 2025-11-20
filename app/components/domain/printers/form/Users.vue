@@ -1,17 +1,16 @@
 <script lang="ts" setup>
-import { useUsers } from "../../composables/useUsers";
-
 defineOptions({
   name: "PrintersUsers",
 });
 
-const { data } = useUsers({ lazy: true });
+const { data, status } = useUsers({ lazy: true });
 </script>
 
 <template>
   <UiCombobox
+    v-if="status === 'success' && data"
     label="Usuário"
-    :items="data ?? []"
+    :items="data.rows ?? []"
     item-title="name"
     item-value="name"
   />
