@@ -18,12 +18,14 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }]
     },
     pageTransition: {
-      name: 'fade',
-      mode: 'out-in' // default
+      name: 'page',
+      mode: 'out-in',
+      duration: 300
     },
     layoutTransition: {
-      name: 'fade',
-      mode: 'out-in' // default
+      name: 'layout',
+      mode: 'out-in',
+      duration: 300
     },
   },
 
