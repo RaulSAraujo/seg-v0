@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { createDefaultPackage } from "~/factories/current/packageFactory";
+import { createDefaultPackage } from "~/factories/packageFactory";
 
 import type { Row } from "~/interfaces/Package";
 

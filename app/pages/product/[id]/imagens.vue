@@ -6,7 +6,7 @@ definePageMeta({
 const productStore = useProductStore();
 const { product } = storeToRefs(productStore);
 
-const { data, status } = $api("files/product-images", {
+const { data, status } = $useApi("files/product-images", {
   key: "PhotoProduct",
   query: {
     brand: product.value?.brand?.toLowerCase(),

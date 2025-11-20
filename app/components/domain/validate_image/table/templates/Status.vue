@@ -26,14 +26,14 @@ const comp = computed({
   },
 });
 
-const update = (value: string) => {
+const update = async (value: string) => {
   interface Response {
     message: string;
     result: [];
     success: boolean;
   }
 
-  return useNuxtApp().$customFetch<Response>("validate-products-image", {
+  return await $api<Response>("validate-products-image", {
     method: "PUT",
     body: {
       id: props.id,
