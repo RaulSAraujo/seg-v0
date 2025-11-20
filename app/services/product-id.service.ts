@@ -2,6 +2,21 @@ import type { Row } from "~/interfaces/Product";
 
 import { prepareProductDetailsForApi } from "~/composables/product_id/productMapper";
 
+export interface ProductResponse {
+    message?: string;
+    result?: Row[];
+    success?: boolean;
+}
+
+export interface ProductDeleteResponse {
+    message: string;
+    success: boolean;
+}
+
+export interface MountAdDescriptionResponse {
+    description: string;
+}
+
 export async function putProduct(
     body: Partial<Row>,
     pstatuses?: number[],
@@ -9,8 +24,7 @@ export async function putProduct(
 ) {
     const prepare = prepareProductDetailsForApi(body, productMeasurementsChanged);
 
-    const nuxtApp = useNuxtApp()
-    const response = await nuxtApp.$customFetch(`/product`, {
+    const response = await $api<ProductResponse>(`/product`, {
         method: 'PUT',
         body: {
             ...prepare,
@@ -24,19 +38,16 @@ export async function putProduct(
 export async function deleteProduct(id: number | undefined) {
     if (!id) return;
 
-    const nuxtApp = useNuxtApp()
-    const response = await nuxtApp.$customFetch(`/product/${id}`, {
+    const response = await $api<ProductDeleteResponse>(`/product/${id}`, {
         method: 'DELETE',
     });
-
 
     return response
 }
 
 export async function getMountAdDescription(id: string) {
-    const nuxtApp = useNuxtApp()
-    const response = await nuxtApp.$customFetch(`/product/mount-ad-description`, {
-        params: {
+    const response = await $api<MountAdDescriptionResponse>(`/product/mount-ad-description`, {
+        query: {
             id: id
         }
     });

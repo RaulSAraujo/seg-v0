@@ -19,10 +19,14 @@ export async function getById(id: string) {
     }
 }
 
+export interface ClientResponse extends Row {
+    message?: string;
+}
+
 export async function creation(form: RowWithAddressSingle) {
     const address1 = form.ClientsAddresses;
 
-    const res = await $api('/client', {
+    const res = await $api<ClientResponse>('/client', {
         method: 'POST',
         body: {
             ...form,
@@ -30,7 +34,7 @@ export async function creation(form: RowWithAddressSingle) {
         },
     })
 
-    return res as Row;
+    return res;
 }
 
 export async function update(
@@ -41,7 +45,7 @@ export async function update(
 ) {
     const address1 = form.ClientsAddresses;
 
-    const res = await $api(`/client/${id}`, {
+    const res = await $api<ClientResponse>(`/client/${id}`, {
         method: 'PUT',
         body: {
             ...form,
@@ -49,6 +53,6 @@ export async function update(
         },
     })
 
-    return res as Row;
+    return res;
 }
 

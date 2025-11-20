@@ -1,14 +1,13 @@
 import type { Form, Row } from '~/interfaces/ShipmentOrders'
 
-interface Response {
+export interface ShipmentResponse {
     message: string;
-    result: Row[]
-    success: boolean
+    result: Row[];
+    success: boolean;
 }
 
 export async function creation(form: Form) {
-    const nuxtApp = useNuxtApp()
-    const res = await nuxtApp.$customFetch<Response>('/shipment', {
+    const res = await $api<ShipmentResponse>('/shipment', {
         method: 'POST',
         body: form
     })
@@ -17,8 +16,7 @@ export async function creation(form: Form) {
 }
 
 export async function update(form: Form) {
-    const nuxtApp = useNuxtApp()
-    const res = await nuxtApp.$customFetch<Response>('/shipment', {
+    const res = await $api<ShipmentResponse>('/shipment', {
         method: 'PUT',
         body: form
     })

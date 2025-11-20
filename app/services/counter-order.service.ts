@@ -4,9 +4,7 @@ export const creationInformationCenter = async (
   counterOrderId: string,
   description: string
 ): Promise<CounterOrderInformationCentral> => {
-  const { $customFetch } = useNuxtApp()
-  
-  const response = await $customFetch<CounterOrderInformationCentral>(
+  const response = await $api<CounterOrderInformationCentral>(
     `/api/v1/counter-order/information-center`,
     {
       method: 'POST',
@@ -24,9 +22,7 @@ export const updateInformationCenter = async (
   id: number,
   description: string
 ): Promise<CounterOrderInformationCentral> => {
-  const { $customFetch } = useNuxtApp()
-  
-  const response = await $customFetch<CounterOrderInformationCentral>(
+  const response = await $api<CounterOrderInformationCentral>(
     `/api/v1/counter-order/information-center/${id}`,
     {
       method: 'PUT',
@@ -42,9 +38,7 @@ export const updateInformationCenter = async (
 export const deleteInformationCenter = async (
   id: number
 ): Promise<{ message: string }> => {
-  const { $customFetch } = useNuxtApp()
-  
-  const response = await $customFetch<{ message: string }>(
+  const response = await $api<{ message: string }>(
     `/api/v1/counter-order/information-center/${id}`,
     {
       method: 'DELETE',

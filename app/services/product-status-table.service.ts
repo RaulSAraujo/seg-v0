@@ -3,12 +3,22 @@ import type { Row as RowProduct } from '~/interfaces/Product'
 
 import { getActiveProductStatusIds } from "~/composables/product_status_table/productStatusMapper";
 
+export interface PstatusUpdateResponse {
+    message?: string;
+    result?: any[];
+    success?: boolean;
+}
+
+export interface BlockedStatusResponse {
+    message: string;
+    result: any[];
+    success: boolean;
+}
 
 export async function updatePstatus(id: number, items: Row[]) {
     const activeStatus = getActiveProductStatusIds(items);
 
-    const nuxtApp = useNuxtApp()
-    const response = await nuxtApp.$customFetch(`/product`, {
+    const response = await $api<PstatusUpdateResponse>(`/product`, {
         method: "PUT",
         body: {
             id,
@@ -20,8 +30,7 @@ export async function updatePstatus(id: number, items: Row[]) {
 }
 
 export async function addBlockedStatus(product: RowProduct) {
-    const nuxtApp = useNuxtApp()
-    const response = await nuxtApp.$customFetch(`/product/quotation-pack/quotation`, {
+    const response = await $api<BlockedStatusResponse>(`/product/quotation-pack/quotation`, {
         method: "POST",
         body: [
             {

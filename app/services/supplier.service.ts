@@ -1,7 +1,11 @@
 import type { Row, Form } from '~/interfaces/Supplier'
 
+export interface SupplierResponse extends Row {
+    message?: string;
+}
+
 export async function creation(form: Form) {
-    const res = await $api('/supplier', {
+    const res = await $api<SupplierResponse>('/supplier', {
         method: 'POST',
         body: {
             name: form.name.toUpperCase(),
@@ -11,6 +15,6 @@ export async function creation(form: Form) {
         }
     })
 
-    return res as Row;
+    return res;
 }
 

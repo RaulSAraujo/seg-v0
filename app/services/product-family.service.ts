@@ -1,12 +1,25 @@
+import type { Row as ProductSellRow } from '~/interfaces/ProductSell'
+
+export interface ProductSellListResponse {
+    rows: ProductSellRow[];
+    totalRecords: number;
+    resultCount: number;
+}
+
+export interface ChangeFamilyResponse {
+    message?: string;
+    result?: any[];
+    success?: boolean;
+}
+
 export async function findFamily(id: string) {
-    const nuxtApp = useNuxtApp()
-    const products = await nuxtApp.$customFetch(`/product-sell`, {
-        params: {
+    const products = await $api<ProductSellListResponse>(`/product-sell`, {
+        query: {
             id
         }
     })
 
-    const sorted = useSorted(products, (a, b) => {
+    const sorted = useSorted(products.rows, (a, b) => {
         if (a.id < b.id) return -1;
         if (a.id > b.id) return 1;
 
@@ -17,8 +30,7 @@ export async function findFamily(id: string) {
 }
 
 export async function changeFamily(id: string, produto_chave: number) {
-    const nuxtApp = useNuxtApp()
-    const response = await nuxtApp.$customFetch(`/product`, {
+    const response = await $api<ChangeFamilyResponse>(`/product`, {
         method: "PUT",
         body: {
             id,

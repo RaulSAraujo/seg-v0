@@ -1,9 +1,14 @@
 import type { Row, Form } from '~/interfaces/ValidateProductsImage'
 
+export interface ValidateImageResponse extends Row {
+    message?: string;
+    success?: boolean;
+}
+
 export async function creation(form: Form) {
     const { data: user } = useAuth();
 
-    const res = await $api('/validate-products-image', {
+    const res = await $api<ValidateImageResponse>('/validate-products-image', {
         method: 'POST',
         body: {
             name: form.name.toUpperCase(),
@@ -12,6 +17,6 @@ export async function creation(form: Form) {
         }
     })
 
-    return res as Row;
+    return res;
 }
 

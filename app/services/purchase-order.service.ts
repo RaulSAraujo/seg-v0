@@ -2,8 +2,20 @@ import type { Row, Quotation } from '~/interfaces/Product';
 
 import { prepareQuotation } from '~/composables/purchase_order/quotationMapper';
 
+export interface InvoiceProductResponse {
+    message?: string;
+    result?: Row[];
+    success?: boolean;
+}
+
+export interface QuotationPackResponse {
+    message: string;
+    result: any[];
+    success: boolean;
+}
+
 export async function putInvoiceProduct(product: Partial<Row>) {
-    const response = await $api(`/product`, {
+    const response = await $api<InvoiceProductResponse>(`/product`, {
         method: "PUT",
         body: {
             id: product.id,
@@ -27,7 +39,7 @@ export async function putInvoiceProduct(product: Partial<Row>) {
 export async function updateQuotationPack(quotation: Quotation, name: string, costChanged: boolean) {
     const quotationMapper = prepareQuotation(quotation);
 
-    const response = await $api(`/product/quotation-pack/quotation`, {
+    const response = await $api<QuotationPackResponse>(`/product/quotation-pack/quotation`, {
         method: "POST",
         body: [{
             ...quotationMapper,

@@ -1,9 +1,14 @@
 import type { RowWithUser, Form, Row } from "~/interfaces/OrdersMl";
 
+export interface OrderMlResponse extends RowWithUser {
+    message?: string;
+    success?: boolean;
+}
+
 export async function creationOrderMl(form: Form) {
     const { data } = useAuth();
 
-    const res = await $api<RowWithUser>('/orders-finality-stock-ml', {
+    const res = await $api<OrderMlResponse>('/orders-finality-stock-ml', {
         method: 'POST',
         body: {
             ...form,
@@ -16,7 +21,7 @@ export async function creationOrderMl(form: Form) {
 }
 
 export async function updateOrderMl(form: Partial<Row>) {
-    const res = await $api<RowWithUser>('/orders-finality-stock-ml', {
+    const res = await $api<OrderMlResponse>('/orders-finality-stock-ml', {
         method: 'PUT',
         body: form
     })

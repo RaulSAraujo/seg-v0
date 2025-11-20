@@ -1,7 +1,19 @@
 import type { Row } from "~/interfaces/Product";
 
+export interface ProductListResponse {
+    rows: Row[];
+    totalRecords: number;
+    resultCount: number;
+}
+
+export interface KitUpdateResponse {
+    message: string;
+    result: any[];
+    success: boolean;
+}
+
 export async function findProduct(name: string) {
-    const response = await $api<Row[]>(`/product`, {
+    const response = await $api<ProductListResponse>(`/product`, {
         query: {
             page: 1,
             perPage: 50,
@@ -10,7 +22,7 @@ export async function findProduct(name: string) {
         }
     })
 
-    const sorted = useSorted(response, (a, b) => {
+    const sorted = useSorted(response.rows, (a, b) => {
         if (!a.name || !b.name) return 0;
 
         if (a.name < b.name) return -1;
@@ -22,8 +34,8 @@ export async function findProduct(name: string) {
     return sorted.value
 }
 
-export function updateCompositionKit(typeId: string, families: { id: number, qtd_itens: number }[]) {
-    const res = $api(`/product/kit`, {
+export async function updateCompositionKit(typeId: string, families: { id: number, qtd_itens: number }[]) {
+    const res = await $api<KitUpdateResponse>(`/product/kit`, {
         method: "PUT",
         body: {
             id: typeId,
@@ -35,8 +47,8 @@ export function updateCompositionKit(typeId: string, families: { id: number, qtd
     return res
 }
 
-export function removeCompositionKit(typeId: string, remove_id: number) {
-    const res = $api(`/product/kit`, {
+export async function removeCompositionKit(typeId: string, remove_id: number) {
+    const res = await $api<KitUpdateResponse>(`/product/kit`, {
         method: "PUT",
         body: {
             id: typeId,

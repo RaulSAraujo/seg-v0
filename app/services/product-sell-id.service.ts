@@ -1,14 +1,16 @@
 import type { RowWithRelationship } from "~/interfaces/ProductSell";
 
-export async function getProductSellById(id: string) {
-    const { data } = await useFetch(`/product-sell/${id}`);
+export interface ProductSellResponse extends RowWithRelationship {
+    message?: string;
+    success?: boolean;
+}
 
-    return data.value as unknown as RowWithRelationship;
+export async function getProductSellById(id: string) {
+    return await $api<ProductSellResponse>(`/product-sell/${id}`);
 }
 
 export async function updateProductSellId(product: RowWithRelationship) {
-
-    await $api(`/product-sell/${product.id}`, {
+    await $api<ProductSellResponse>(`/product-sell/${product.id}`, {
         method: "PUT",
         body: {
             syncecom: product.syncecom,

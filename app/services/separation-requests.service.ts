@@ -1,13 +1,23 @@
 import type { Row } from "~/interfaces/SalesOrderSeparation";
 
+export interface ProcessOrdersResponse {
+    message: string;
+    success: boolean;
+    result: any;
+}
+
+export interface OrdersByTypeResponse {
+    rows: Row[];
+    totalRecords: number;
+    resultCount: number;
+}
+
 export async function processOrdersSalesOrderSeparation() {
-    const nuxtApp = useNuxtApp()
-    return await nuxtApp.$customFetch('/sales-orders-separation/process-orders')
+    return await $api<ProcessOrdersResponse>('/sales-orders-separation/process-orders')
 }
 
 export async function getOrdersByTypeSalesOrderSeparation(type: string) {
-    const nuxtApp = useNuxtApp()
-    return await nuxtApp.$customFetch<Row[]>(`/sales-orders-separation/get-orders-by-type`, {
+    return await $api<OrdersByTypeResponse>(`/sales-orders-separation/get-orders-by-type`, {
         query: {
             type: type
         }

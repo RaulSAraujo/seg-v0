@@ -1,13 +1,17 @@
 import type { Row } from '~/interfaces/ClassificationApparatus'
 
+export interface ClassificationApparatusResponse extends Row {
+    message?: string;
+}
+
 export async function creation(name: string) {
-    const res = await $api('/apparatus/classification', {
+    const res = await $api<ClassificationApparatusResponse>('/apparatus/classification', {
         method: 'POST',
         body: {
             name
         },
     })
 
-    return res as Row;
+    return res;
 }
 

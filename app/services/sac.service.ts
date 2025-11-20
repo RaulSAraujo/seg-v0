@@ -8,16 +8,20 @@ import type { CustomerWithClient, RowWithAddresses } from "~/interfaces/Customer
 
 const { transformDateBr } = useDateConversion();
 
+export interface ProductListResponse {
+    rows: RowWithRelationship[];
+    totalRecords: number;
+    resultCount: number;
+}
+
 export async function findProductsApi(form: FormProducts) {
-    const nuxtApp = useNuxtApp()
-    return await nuxtApp.$customFetch<RowWithRelationship[]>('/product', {
+    return await $api<ProductListResponse>('/product', {
         query: form
     })
 }
 
 export async function productOfSacSaleApi(form: Partial<SacSaleProduct>) {
-    const nuxtApp = useNuxtApp()
-    return await nuxtApp.$customFetch<SacSaleProduct>('/sac-sale/get-product', {
+    return await $api<SacSaleProduct>('/sac-sale/get-product', {
         query: {
             quantity: form.quantity,
             manufacturer_code: form.manufacturer_code,
@@ -40,8 +44,7 @@ export async function quoteFreightApi() {
     if (seller.value == undefined || seller.value == "") throw new Error("Informe o local da venda.");
     if (products.value.length == 0) throw new Error("Adicione algum produto.");
 
-    const nuxtApp = useNuxtApp()
-    return await nuxtApp.$customFetch<QuoteFreight[]>('/sac-sale/quote-freight', {
+    return await $api<QuoteFreight[]>('/sac-sale/quote-freight', {
         method: 'POST',
         body: {
             zip_code: addressData.value.zip_code,
@@ -60,8 +63,7 @@ export async function findCustomerApi() {
 
     if (seller.value == undefined || customerData.value.id == 0) return
 
-    const nuxtApp = useNuxtApp()
-    const res = await nuxtApp.$customFetch<CustomerWithClient>('/customer', {
+    const res = await $api<CustomerWithClient>('/customer', {
         query: {
             cpf: customerData.value.cpf.replace(/[^a-z0-9]/gi, ""),
             seller: seller.value,
@@ -83,14 +85,19 @@ export async function findCustomerApi() {
     }
 }
 
+export interface CustomerCreationResponse {
+    message: string;
+    success: boolean;
+    result: any;
+}
+
 export async function createCustomerApi(values: RowWithAddressSingle) {
     const sacStore = useSacStore();
     const { seller } = storeToRefs(sacStore);
 
     const address1 = values.ClientsAddresses;
 
-    const nuxtApp = useNuxtApp()
-    return await nuxtApp.$customFetch('/customer', {
+    return await $api<CustomerCreationResponse>('/customer', {
         method: 'POST',
         body: {
             ...values,
@@ -100,14 +107,19 @@ export async function createCustomerApi(values: RowWithAddressSingle) {
     })
 }
 
+export interface CustomerUpdateResponse {
+    message: string;
+    success: boolean;
+    result: any;
+}
+
 export async function updateCustomerApi(values: RowWithAddressSingle, customer: RowWithAddresses) {
     const sacStore = useSacStore();
     const { seller } = storeToRefs(sacStore);
 
     const address1 = values.ClientsAddresses;
 
-    const nuxtApp = useNuxtApp()
-    return await nuxtApp.$customFetch('/customer', {
+    return await $api<CustomerUpdateResponse>('/customer', {
         method: 'PUT',
         body: {
             ...values,
@@ -125,8 +137,7 @@ export async function updateCustomerApi(values: RowWithAddressSingle, customer: 
 }
 
 export async function customerHistoryApi(customerId: number) {
-    const nuxtApp = useNuxtApp()
-    return await nuxtApp.$customFetch<CustomerHistory>('/sac-sale/customer-history', {
+    return await $api<CustomerHistory>('/sac-sale/customer-history', {
         query: {
             customer_id: customerId,
         }
