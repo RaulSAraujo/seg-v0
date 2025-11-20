@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { clientWithAddressSchema } from "~/schemas/client";
 import { createCustomerApi } from "~/services/sac.service";
-import { createDefaultClient } from "~/factories/current/clientFactory";
+import { createDefaultClient } from "~/factories/clientFactory";
 
 import type { FetchError } from "ofetch";
 import type { RowWithAddressSingle } from "~/interfaces/Client";

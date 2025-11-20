@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { clientWithAddressSchema } from "~/schemas/client";
 import { updateCustomerApi } from "~/services/sac.service";
-import { createDefaultClient } from "~/factories/current/clientFactory";
+import { createDefaultClient } from "~/factories/clientFactory";
 
 import type { RowWithAddresses as Customer } from "~/interfaces/Customer";
 import type { RowWithAddressSingle as Client } from "~/interfaces/Client";

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { clientWithAddressSchema } from "~/schemas/client";
 import { creation } from "~/services/client.service";
-import { transformerData } from "~/composables/client/transformeData";
+import { transformerData } from "~/composables/client/clientMapper";
 
 import type { RowWithAddressSingle } from "~/interfaces/Client";
 
