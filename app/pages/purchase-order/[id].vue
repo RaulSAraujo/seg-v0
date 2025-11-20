@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { createDefaultPurchaseControl } from "~/factories/current/purchaseControl";
+import { createDefaultPurchaseControl } from "~/factories/purchaseControl";
 import { usePurchaseControl } from "~/composables/purchase_order/usePurchaseControl";
 
 import type { Form } from "~/interfaces/PurchaseControl";

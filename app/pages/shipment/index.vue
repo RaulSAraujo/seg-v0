@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { createDefaultShipment } from "~/factories/current/shipmentFactory";
+import { createDefaultShipment } from "~/factories/shipmentFactory";
 
 import type { Row } from "~/interfaces/ShipmentOrders";
 

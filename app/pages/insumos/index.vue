@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { createDefaultInsumos } from "~/factories/current/insumosFactory";
+import { createDefaultInsumos } from "~/factories/insumosFactory";
 import type { Form } from "~/interfaces/InputMaterials";
 
 useHead({

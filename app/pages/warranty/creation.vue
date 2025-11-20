@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { createDefaultWarranty } from "~/factories/current/warrantyFactory";
+import { createDefaultWarranty } from "~/factories/warrantyFactory";
 
 import type { RowWithRelationship } from "~/interfaces/Warranty";
 

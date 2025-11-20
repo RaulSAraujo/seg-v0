@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { createDefaultWarranty } from "~/factories/current/warrantyFactory";
+import { createDefaultWarranty } from "~/factories/warrantyFactory";
 import { useWarrantyById } from "~/composables/warranty/useWarrantyById";
 import { initialWarrantyTransformData } from "~/composables/warranty/utils/transformeData";
 
