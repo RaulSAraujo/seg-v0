@@ -56,8 +56,15 @@ export const useProductStore = defineStore("product", () => {
     const costTableIndex = ref(-1);
 
     function setValues(details: RowWithRelationship) {
+        const { isDatabaseDate, brDateWithTime } = useDateConversion();
+
         Object.entries(details).forEach(([key, value]) => {
             if (key in product.value) {
+                if (typeof value === "string" && isDatabaseDate(value)) {
+                    ((product.value as unknown) as Record<string, unknown>)[key] = brDateWithTime(value);
+                    return;
+                }
+
                 ((product.value as unknown) as Record<string, unknown>)[key] = value;
             }
         });

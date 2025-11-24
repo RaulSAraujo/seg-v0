@@ -18,7 +18,7 @@ const activateDialogToEdit = ref<boolean>(false);
 
     <ProductTable @dblclick="activateDialogToEdit = true" />
 
-    <ProductCostTableMyTableToEdit
+    <ProductCostTableToEdit
       v-if="activateDialogToEdit"
       v-model="activateDialogToEdit"
       @disable="activateDialogToEdit = false"

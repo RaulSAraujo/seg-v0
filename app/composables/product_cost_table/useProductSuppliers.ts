@@ -1,4 +1,4 @@
-import type { Row } from "~/interfaces/Package";
+import type { Supplier } from "~/interfaces/Supplier";
 
 type Options = {
     lazy?: boolean
@@ -9,7 +9,7 @@ type Options = {
 export const useProductSuppliers = (options: Options) => {
     const { server = true, immediate = true, lazy = false } = options
 
-    const { data, status, error, refresh, execute } = $useApi('/product/supplier', {
+    const { data, status, error, refresh, execute } = $useApi<Supplier>('/product/supplier', {
         key: "supplier",
         lazy,
         server,
@@ -20,9 +20,9 @@ export const useProductSuppliers = (options: Options) => {
     return {
         refresh,
         execute,
+        data: data,
         error: readonly(error),
         status: readonly(status),
-        data: data as unknown as Row[],
     }
 }
 

@@ -1,17 +1,14 @@
 import type { Quotation } from '~/interfaces/Product';
 
-export function prepareQuotation(q: Quotation) {
-    const dayjs = useDayjs();
+export function prepareQuotation(quotation: Quotation) {
+    const { transformDateDatabase } = useDateConversion();
 
     // Removendo relacionamentos
-    delete q.Supplier
+    delete quotation.Supplier;
 
     // Formatação de datas
-    q.cost_at = dayjs(q.cost_at, "DD/MM/YYYY").format("YYYY-MM-DD");
-    q.availability_at = dayjs(q.availability_at, "DD/MM/YYYY").format("YYYY-MM-DD");
+    const transformed = transformDateDatabase(quotation);
 
-    return {
-        ...q,
-    };
+    return transformed;
 }
 

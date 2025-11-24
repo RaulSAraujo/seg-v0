@@ -11,7 +11,7 @@ import type { Row } from '~/interfaces/Product';
 export function prepareProductDetailsForApi(productDetails: Partial<Row>, productMeasurementsChanged: boolean) {
     const preparedDetails: Partial<Row> = { ...productDetails };
 
-    const { databaseDateWithTime } = useDateConversion();
+    const { transformDateDatabase } = useDateConversion();
 
     if (productMeasurementsChanged) {
         // Garante que os valores são tratados como números antes de formatar
@@ -33,18 +33,7 @@ export function prepareProductDetailsForApi(productDetails: Partial<Row>, produc
         delete preparedDetails.length;
     }
 
-    // Formatação de datas
-    if (preparedDetails.virtual_stock_temporary_at) {
-        preparedDetails.virtual_stock_temporary_at = databaseDateWithTime(
-            `${preparedDetails.virtual_stock_temporary_at}`
-        );
-    }
+    const transformed = transformDateDatabase(preparedDetails);
 
-    if (preparedDetails.virtual_stock_permanent_at) {
-        preparedDetails.virtual_stock_permanent_at = databaseDateWithTime(
-            `${preparedDetails.virtual_stock_permanent_at}`
-        );
-    }
-
-    return preparedDetails;
+    return transformed;
 }

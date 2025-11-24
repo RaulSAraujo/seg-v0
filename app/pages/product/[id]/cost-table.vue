@@ -9,15 +9,15 @@ definePageMeta({
     <v-toolbar title="TABELA DE CUSTOS" rounded="t-xl" />
 
     <v-container fluid>
-      <ProductCostTable />
+      <ProductCost />
 
-      <ProductCostTableMyTable />
+      <ProductCostTable />
     </v-container>
 
     <v-toolbar title="PERCENTUAIS FISCAIS / VALORES FISCAIS" />
 
     <v-container fluid>
-      <ProductCostTableInvoice />
+      <ProductCostInvoice />
     </v-container>
   </div>
 </template>

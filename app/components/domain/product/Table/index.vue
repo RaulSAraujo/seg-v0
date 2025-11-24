@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import type { RowWithRelationship } from "~/interfaces/Product";
 
-import { UpdateAll, Integration } from "./bottom_sheet";
+import Integration from "./bottom-sheet/Integration.vue";
+import UpdateAll from "./bottom-sheet/UpdateAll.vue";
 import { Pref, Status, Cost, GrossMargin, Price, Name } from "./templates";
 
 defineOptions({
@@ -38,7 +39,6 @@ function activateDialogToEdit(item: RowWithRelationship) {
         color="blue"
         density="compact"
         :to="`/produto-compra/${item.id}`"
-        @click="productStore.setValues(item)"
       />
     </template>
 

@@ -52,8 +52,36 @@ export default function () {
 
         Object.entries(transformed).forEach(([key, value]) => {
             if (typeof value === "string" && isDate(value)) {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                (transformed as any)[key] = databaseDate(value) || null
+                try {
+                    // Verifica se é data com hora (formato brasileiro: DD/MM/YYYY HH:mm:ss)
+                    const hasTime = dayjs(value, 'DD/MM/YYYY HH:mm:ss', true).isValid()
+                    
+                    let convertedValue: string | null = null
+                    if (hasTime) {
+                        const result = databaseDateWithTime(value)
+                        convertedValue = result && result.trim() !== '' ? result : null
+                    } else {
+                        const result = databaseDate(value)
+                        convertedValue = result && result.trim() !== '' ? result : null
+                    }
+                    
+                    // Verifica se a conversão resultou em uma data válida
+                    if (convertedValue) {
+                        const isValid = hasTime 
+                            ? dayjs(convertedValue, 'YYYY-MM-DDTHH:mm:ss', true).isValid()
+                            : dayjs(convertedValue, 'YYYY-MM-DD', true).isValid()
+                        
+                        if (!isValid) {
+                            convertedValue = null
+                        }
+                    }
+                    
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    (transformed as any)[key] = convertedValue
+                } catch (error) {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    (transformed as any)[key] = null
+                }
             }
         })
 
@@ -65,8 +93,38 @@ export default function () {
 
         Object.entries(transformed).forEach(([key, value]) => {
             if (typeof value === "string" && isDatabaseDate(value)) {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                (transformed as any)[key] = brDate(value) || null
+                try {
+                    // Verifica se é data com hora (formatos: YYYY-MM-DD HH:mm:ss, YYYY-MM-DDTHH:mm:ss, YYYY-MM-DDTHH:mm:ss.SSS[Z])
+                    const hasTime = dayjs(value, 'YYYY-MM-DD HH:mm:ss', true).isValid() 
+                        || dayjs(value, 'YYYY-MM-DDTHH:mm:ss', true).isValid()
+                        || dayjs(value, 'YYYY-MM-DDTHH:mm:ss.SSS[Z]', true).isValid()
+                    
+                    let convertedValue: string | null = null
+                    if (hasTime) {
+                        const result = brDateWithTime(value)
+                        convertedValue = result && result.trim() !== '' ? result : null
+                    } else {
+                        const result = brDate(value)
+                        convertedValue = result && result.trim() !== '' ? result : null
+                    }
+                    
+                    // Verifica se a conversão resultou em uma data válida
+                    if (convertedValue) {
+                        const isValid = hasTime 
+                            ? dayjs(convertedValue, 'DD/MM/YYYY HH:mm:ss', true).isValid()
+                            : dayjs(convertedValue, 'DD/MM/YYYY', true).isValid()
+                        
+                        if (!isValid) {
+                            convertedValue = null
+                        }
+                    }
+                    
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    (transformed as any)[key] = convertedValue
+                } catch (error) {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    (transformed as any)[key] = null
+                }
             }
         })
 
