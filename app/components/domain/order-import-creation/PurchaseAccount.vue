@@ -1,0 +1,18 @@
+<script lang="ts" setup>
+const account = ref([
+  "C-1",
+  "C-2",
+  "C-3",
+  "C-4",
+  "C-5",
+  "C-6",
+  "C-7",
+  "C-8",
+  "C-9",
+  "C-10",
+]);
+</script>
+
+<template>
+  <UiSelect label="Conta da compra" :items="account" />
+</template>
