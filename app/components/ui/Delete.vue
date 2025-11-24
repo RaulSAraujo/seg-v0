@@ -33,7 +33,7 @@ const destroy = async () => {
     }
 
     const { success, message } = await $api<Response>(
-      `/proxy/${props.urlLocal ?? url.value}`,
+      `/${props.urlLocal ?? url.value}`,
       {
         method: "DELETE",
         query: {

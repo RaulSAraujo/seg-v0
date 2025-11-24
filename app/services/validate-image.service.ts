@@ -1,3 +1,4 @@
+import type { FetchError } from "ofetch";
 import type { Row, Form } from '~/interfaces/ValidateProductsImage'
 
 export interface ValidateImageResponse extends Row {
@@ -6,17 +7,23 @@ export interface ValidateImageResponse extends Row {
 }
 
 export async function creation(form: Form) {
-    const { data: user } = useAuth();
+    try {
+        const { data: user } = useAuth();
 
-    const res = await $api<ValidateImageResponse>('/validate-products-image', {
-        method: 'POST',
-        body: {
-            name: form.name.toUpperCase(),
-            status: form.status,
-            user_id: user.value?.id,
-        }
-    })
+        const res = await $api<ValidateImageResponse>('/validate-products-image', {
+            method: 'POST',
+            body: {
+                name: form.name?.toUpperCase(),
+                status: form.status,
+                user_id: user.value?.id,
+            }
+        })
 
-    return res;
+        return res;
+    } catch (error) {
+        const err = error as FetchError;
+
+        $toast().error(`${err.data?.error ?? err.statusMessage}`);
+    }
 }
 

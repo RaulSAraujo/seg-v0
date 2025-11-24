@@ -14,25 +14,37 @@ const emit = defineEmits(["close"]);
 const tableStore = useTableStore();
 const { items } = storeToRefs(tableStore);
 
+const loading = ref(false);
+
 const validate = reactive<Form>({
   name: "",
   status: "",
 });
 
 const create = async () => {
-  try {
-    const res = await creation(validate);
-
-    $toast().success("Novo registro criado com sucesso.");
-
-    emit("close");
-
-    items.value.splice(0, 0, res);
-  } catch (error) {
-    const err = error as FetchError;
-
-    $toast().error(`${err.data.data.error ?? err.statusMessage}`);
+  if(!validate.name || !validate.status) {
+    $toast().error("Preencha todos os campos obrigatórios.");
+    return;
   }
+
+  loading.value = true;
+
+  const res = await creation(validate);
+
+  if (!res) return;
+
+  $toast().success("Novo registro criado com sucesso.");
+
+  items.value.splice(0, 0, {
+    ...res,
+    observation: "",
+    conclusion_date: null,
+  });
+  
+  loading.value = false;
+
+  emit("close");
+
 };
 
 const resetProps = () => {
@@ -75,6 +87,7 @@ const resetProps = () => {
           variant="flat"
           width="10vw"
           text="SALVAR"
+          :loading="loading"
           @click="create"
         />
 
