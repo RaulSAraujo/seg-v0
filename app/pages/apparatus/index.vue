@@ -20,11 +20,11 @@ const dialog = ref(false);
 
     <ApparatusFilter @active="dialog = true" />
 
-    <ApparatusTable :classification="data ?? []" />
+    <ApparatusTable :classification="data?.rows ?? []" />
 
     <ApparatusCreation
       v-model="dialog"
-      :classification-items="data ?? []"
+      :classification-items="data?.rows ?? []"
       @close="dialog = false"
     />
   </div>

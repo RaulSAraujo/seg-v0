@@ -1,4 +1,4 @@
-import type { Row } from "~/interfaces/Package";
+import type { ClassificationApparatus } from "~/interfaces/ClassificationApparatus";
 
 type Options = {
     lazy?: boolean
@@ -9,7 +9,7 @@ type Options = {
 export const useClassificationApparatus = (options: Options) => {
     const { server = true, immediate = true, lazy = false } = options
 
-    const { data, status, error, refresh, execute } = $useApi('/apparatus/classification', {
+    const { data, status, error, refresh, execute } = $useApi<ClassificationApparatus>('/apparatus/classification-apparatus', {
         lazy,
         server,
         immediate,
@@ -18,8 +18,8 @@ export const useClassificationApparatus = (options: Options) => {
     return {
         refresh,
         execute,
+        data: data,
         error: readonly(error),
         status: readonly(status),
-        data: data as unknown as Row[],
     }
 }
